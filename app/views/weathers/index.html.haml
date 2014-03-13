@@ -1,0 +1,19 @@
+.col-xs-8
+  = form_for :weather, method: :get, html: {class: 'form-horizontal'} do |f|
+    .form-group
+      = label_tag :city, 'City', class: 'col-sm-2 control-label'
+      .col-sm-6
+        = text_field_tag :city, '', class: 'form-control'
+    .form-group
+      = label_tag :state, 'State', class: 'col-sm-2 control-label'
+      .col-sm-6
+        = text_field_tag :state, '', class: 'form-control'
+
+    .form-group
+      .col-sm-offset-2.col-sm-6
+        = submit_tag 'Go', class: 'btn btn-default'
+
+  - if @weather_data.present?
+    = @weather_data["main"]["temp"] if @weather_data
+  - else
+    Please enter a City and State.
